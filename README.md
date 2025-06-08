@@ -2,17 +2,15 @@
 #### Progetto di Ingegneria del Software, corso di laurea in Ingegneria Informatica e dell'Automazione.
 
 Se hai voglia di guardare il codice sul tuo computer e non più su github o se hai addirittura voglia di metterci una mano, ecco quello che devi fare:
-1. PREREQUISITO --> Avere Python3.11 installato
-2. Aprire un terminale
-2. Creare una cartella ed entrarci dentro con il terminale
-3. fare "git clone https://github.com/lorenzocalifano/GestioneMagazzino.git"
-4. poi "cd GestioneMagazzino"
-5. ed infine "git init"
+1. Aprire PyCharm e cliccare "Clone Repository"
+2. Inserire questo link https://github.com/lorenzocalifano/GestioneMagazzino.git 
+3. Trust Project
+4. Aprire un terminale da sotto (c'è l'inconcina a sisitra in basso) e scrivere git init
 
 Adesso sei ready per scrivere del codice...\
 Per salvare il codice che hai scritto (i cambiamenti che hai apportato):
 1. git add .
-2. git commit -m "Ragione dei cambiamenti"
+2.  git commit -m "Ragione dei cambiamenti"
 3. git push
 
 per modificare la UI scrivere "designer" nel teminale, modificare, e rigenerare il file .py associato così.\
