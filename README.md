@@ -13,3 +13,6 @@ per "pushare" i cambiamenti su github:
 git add .
 git commit -m "messaggio"
 git push
+
+per eseguire il progetto:
+python3 app/main.py
