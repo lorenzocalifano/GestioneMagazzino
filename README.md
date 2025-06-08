@@ -24,4 +24,4 @@ Prima di scrivere qualsiasi cosa consiglio un bel "git pull" che vi prende la ve
 ## AVVIO
 1. git pull obbligatorio
 2. pip install -r requirements.txt 
-3. python3 app/main.py
+3. python -m app.main (./.venv/bin/python -m app.main)
