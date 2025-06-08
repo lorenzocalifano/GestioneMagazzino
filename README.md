@@ -17,7 +17,7 @@ Per salvare il codice che hai scritto (i cambiamenti che hai apportato):
 1. git add . (il punto è compreso nel comando)
 2. git commit -m "Ragione dei cambiamenti"
 3. git push
-
+ 
 Consiglio di fare questi 3 passaggi ogni volta che modificate qualcosa, così in caso di errore è più semplice tornare ai "backup" precedenti.\
 Prima di scrivere qualsiasi cosa consiglio un bel "git pull" che vi prende la versione piu aggiornata dei file su github.
 
@@ -35,4 +35,9 @@ Prima di scrivere qualsiasi cosa consiglio un bel "git pull" che vi prende la ve
 ## AVVIO
 1. git pull obbligatorio
 2. pip install -r requirements.txt 
-3. python -m app.main (./.venv/bin/python -m app.main)
+3. python -m app.main
+
+### ALTERNATIVA
+1. git pull obbligatorio
+2. pip install -r requirements.txt 
+3. (./.venv/bin/python -m app.main)
