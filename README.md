@@ -40,4 +40,4 @@ Prima di scrivere qualsiasi cosa consiglio un bel "git pull" che vi prende la ve
 ### ALTERNATIVA
 1. git pull obbligatorio
 2. pip install -r requirements.txt 
-3. (./.venv/bin/python -m app.main)
+3. ./.venv/bin/python -m app.main
