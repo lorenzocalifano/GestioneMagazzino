@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  pyqt-app:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
