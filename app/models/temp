@@ -1,0 +1,39 @@
+class MainApp(QMainWindow):
+    def __init__(self, user):
+        super().__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.user = user  # Utente loggato
+        self.db = SessionLocal()
+        self.setWindowTitle(f"Benvenuto {self.user.name}")
+
+    def save_user(self):
+        user_data = UserCreate(
+            name=self.ui.name_input.text(),
+            email=self.ui.email_input.text(),
+            password=self.ui.password_input.text()
+        )
+
+        db_user = User(
+            name=user_data.name,
+            email=user_data.email,
+            hashed_password=hash_password(user_data.password)
+        )
+        self.db.add(db_user)
+        self.db.commit()
+
+def start_app():
+    import sys
+    app = QApplication(sys.argv)
+
+    def on_login_success(user):
+        window = MainApp(user)
+        window.show()
+        app.exec_()
+
+    login = LoginWindow(on_login_success)
+    login.show()
+    sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    start_app()
