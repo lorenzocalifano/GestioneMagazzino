@@ -5,7 +5,8 @@ from app.models.user import User
 from app.utils.security import verify_password, hash_password
 from app.schemas.user_schema import UserCreate
 from app.login import LoginWindow
-from app.ui.main_window import Ui_MainWindow
+from app.ui.main_window import Ui_MainWindow as MainApp
+
 
 def initialize_database():
     """Crea tutte le tabelle e aggiunge un utente di test"""
