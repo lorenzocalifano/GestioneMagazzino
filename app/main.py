@@ -1,38 +1,51 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from app.ui.main_window import Ui_MainWindow # UI generata
 from app.models.database import SessionLocal, engine
 from app.models.user import User
+from app.utils.security import verify_password, hash_password
+from app.schemas.user_schema import UserCreate
+from app.login import LoginWindow
+from app.ui.main_window import Ui_MainWindow
 
 #Crea tabelle nel database (da rimuovere in prod)
 User.metadata.create_all(bind=engine)
 
 class MainApp(QMainWindow):
-    def __init__(self):
+    def __init__(self, user):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
-        #Esempio di connessione al database
+        self.user = user  # Utente loggato
         self.db = SessionLocal()
-
-        self.ui.pushButton.clicked.connect(self.save_user)
+        self.setWindowTitle(f"Benvenuto {self.user.name}")
 
     def save_user(self):
-        #Esempio utilizzo Pydantic + SQLAlchemy.
-        from app.schemas.user_schema import UserCreate
         user_data = UserCreate(
-            name=self.ui.name_input_text(),
-            email=self.ui.email_input.text()
+            name=self.ui.name_input.text(),
+            email=self.ui.email_input.text(),
+            password=self.ui.password_input.text()
         )
 
-        #Salva nel db
-        db_user = User(**user_data.dict())
+        db_user = User(
+            name=user_data.name,
+            email=user_data.email,
+            hashed_password=hash_password(user_data.password)
+        )
         self.db.add(db_user)
         self.db.commit()
 
-if __name__ == "__main__":
+def start_app():
+    import sys
     app = QApplication(sys.argv)
-    window = MainApp()
-    window.show()
+
+    def on_login_success(user):
+        window = MainApp(user)
+        window.show()
+        app.exec_()
+
+    login = LoginWindow(on_login_success)
+    login.show()
     sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    start_app()

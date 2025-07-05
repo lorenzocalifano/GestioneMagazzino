@@ -2,11 +2,11 @@ from pydantic import BaseModel, EmailStr
 
 class UserCreate(BaseModel):
     name: str
-    email: EmailStr
+    email: str
     password: str
 
 class UserResponse(UserCreate):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
