@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from app.models.database import SessionLocal, engine
+from app.models.database import SessionLocal, engine, Base
 from app.models.user import User
 from app.utils.security import verify_password, hash_password
 from app.schemas.user_schema import UserCreate
@@ -8,7 +8,17 @@ from app.login import LoginWindow
 from app.ui.main_window import Ui_MainWindow
 
 #Crea tabelle nel database (da rimuovere in prod)
-User.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
+Base.metadata.drop_all(bind=engine)
+
+db = SessionLocal()
+new_user = User(
+    name="Lorenzo",
+    email="lorenzo@example.com",
+    hashed_password=hash_password("password123")
+)
+db.add(new_user)
+db.commit()
 
 class MainApp(QMainWindow):
     def __init__(self, user):
