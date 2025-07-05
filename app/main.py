@@ -19,7 +19,7 @@ class MainApp(QMainWindow):
         self.ui.pushButton.clicked.connect(self.save_user)
 
     def save_user(self):
-        #Esempio utilizzo Pydantic + SQLAlchemy
+        #Esempio utilizzo Pydantic + SQLAlchemy.
         from app.schemas.user_schema import UserCreate
         user_data = UserCreate(
             name=self.ui.name_input_text(),
