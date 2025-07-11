@@ -14,7 +14,8 @@ class RecuperaPasswordWindow(QMainWindow):
 
     def handle_recupera(self):
         email = self.ui.email_input.text()
-        # Qui dovresti implementare la logica di recupero password
+        # Qui dovremmo implementare la logica di recupero password
+
         # Per ora mostriamo solo un messaggio
         self.ui.error_label.setText("Email di recupero inviata a " + email)
 

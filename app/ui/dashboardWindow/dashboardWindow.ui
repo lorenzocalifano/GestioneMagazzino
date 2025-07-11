@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dashboard - EVENTICA</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">* {
+    font-family: 'Montserrat';
+    font-weight: bold;
+}
+QMainWindow {
+    background-color: #F0F2F5;
+}
+QWidget#centralwidget {
+    background-color: #F0F2F5;
+}
+QLabel {
+    color: #333333;
+}
+QPushButton {
+    background-color: #1E90FF;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
+}
+QPushButton:hover {
+    background-color: #187bcd;
+}
+QFrame#sidebar {
+    background-color: #1E90FF;
+    border-radius: 0;
+}
+QPushButton#menu_button {
+    background-color: transparent;
+    color: white;
+    text-align: left;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+QPushButton#menu_button:hover {
+    background-color: #187bcd;
+}
+QFrame#header {
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+}
+QFrame#widget_container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="main_layout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="sidebar">
+      <property name="minimumSize">
+       <size>
+        <width>250</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>250</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <property name="objectName">
+       <string>sidebar</string>
+      </property>
+      <layout class="QVBoxLayout" name="sidebar_layout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="sidebar_header">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>80</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="sidebar_header_layout">
+          <item>
+           <widget class="QLabel" name="logo_label">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: white; border-radius: 25px;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="sidebar_title">
+            <property name="styleSheet">
+             <string notr="true">color: white; font-size: 20px; font-weight: bold;</string>
+            </property>
+            <property name="text">
+             <string>EVENTICA</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="menu_frame">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="menu_layout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="dashboard_btn">
+            <property name="objectName">
+             <string>menu_button</string>
+            </property>
+            <property name="text">
+             <string>Dashboard</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/icons/dashboard.png</normaloff>:/icons/dashboard.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="prodotti_btn">
+            <property name="objectName">
+             <string>menu_button</string>
+            </property>
+            <property name="text">
+             <string>Gestione Prodotti</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/icons/products.png</normaloff>:/icons/products.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="noleggi_btn">
+            <property name="objectName">
+             <string>menu_button</string>
+            </property>
+            <property name="text">
+             <string>Gestione Noleggi/Vendite</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/icons/rentals.png</normaloff>:/icons/rentals.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="utenti_btn">
+            <property name="objectName">
+             <string>menu_button</string>
+            </property>
+            <property name="text">
+             <string>Gestione Utenti</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/icons/users.png</normaloff>:/icons/users.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="storico_btn">
+            <property name="objectName">
+             <string>menu_button</string>
+            </property>
+            <property name="text">
+             <string>Storico Operazioni</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/icons/history.png</normaloff>:/icons/history.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="logout_btn">
+            <property name="objectName">
+             <string>menu_button</string>
+            </property>
+            <property name="text">
+             <string>Logout</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/icons/logout.png</normaloff>:/icons/logout.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="main_area">
+      <layout class="QVBoxLayout" name="main_area_layout">
+       <property name="spacing">
+        <number>20</number>
+       </property>
+       <property name="leftMargin">
+        <number>20</number>
+       </property>
+       <property name="topMargin">
+        <number>20</number>
+       </property>
+       <property name="rightMargin">
+        <number>20</number>
+       </property>
+       <property name="bottomMargin">
+        <number>20</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="header">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>70</height>
+          </size>
+         </property>
+         <property name="objectName">
+          <string>header</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="header_layout">
+          <item>
+           <widget class="QLabel" name="title_label">
+            <property name="styleSheet">
+             <string notr="true">font-size: 24px; font-weight: bold;</string>
+            </property>
+            <property name="text">
+             <string>Dashboard</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="user_info">
+            <property name="styleSheet">
+             <string notr="true">font-size: 16px;</string>
+            </property>
+            <property name="text">
+             <string>Mario Rossi | Responsabile</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="widgets_container">
+         <property name="objectName">
+          <string>widget_container</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="widgets_layout">
+          <item>
+           <widget class="QFrame" name="widget_prodotti">
+            <property name="styleSheet">
+             <string notr="true">background-color: #FFF8E1;
+border-radius: 10px;
+padding: 15px;</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="widget_prodotti_layout">
+             <item>
+              <widget class="QLabel" name="prodotti_title">
+               <property name="styleSheet">
+                <string notr="true">font-size: 18px; font-weight: bold;</string>
+               </property>
+               <property name="text">
+                <string>Prodotti in esaurimento</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QListWidget" name="prodotti_list">
+               <item>
+                <property name="text">
+                 <string>Prodotto A - Quantità: 2</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Prodotto B - Quantità: 3</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Prodotto C - Quantità: 1</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="widget_noleggi">
+            <property name="styleSheet">
+             <string notr="true">background-color: #E8F5E9;
+border-radius: 10px;
+padding: 15px;</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="widget_noleggi_layout">
+             <item>
+              <widget class="QLabel" name="noleggi_title">
+               <property name="styleSheet">
+                <string notr="true">font-size: 18px; font-weight: bold;</string>
+               </property>
+               <property name="text">
+                <string>Noleggi attivi</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QListWidget" name="noleggi_list">
+               <item>
+                <property name="text">
+                 <string>Noleggio #123 - Cliente: Mario Rossi</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Noleggio #124 - Cliente: Luca Bianchi</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="widget_segnalazioni">
+            <property name="styleSheet">
+             <string notr="true">background-color: #FFEBEE;
+border-radius: 10px;
+padding: 15px;</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="widget_segnalazioni_layout">
+             <item>
+              <widget class="QLabel" name="segnalazioni_title">
+               <property name="styleSheet">
+                <string notr="true">font-size: 18px; font-weight: bold;</string>
+               </property>
+               <property name="text">
+                <string>Segnalazioni recenti</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QListWidget" name="segnalazioni_list">
+               <item>
+                <property name="text">
+                 <string>Segnalazione #45 - Prodotto danneggiato</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Segnalazione #46 - Consegna in ritardo</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QStackedWidget" name="content_area">
+         <widget class="QWidget" name="dashboard_page"/>
+         <widget class="QWidget" name="prodotti_page">
+          <layout class="QVBoxLayout" name="prodotti_page_layout">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Gestione Prodotti - Pagina in costruzione</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="noleggi_page">
+          <layout class="QVBoxLayout" name="noleggi_page_layout">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Gestione Noleggi/Vendite - Pagina in costruzione</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="utenti_page">
+          <layout class="QVBoxLayout" name="utenti_page_layout">
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Gestione Utenti - Pagina in costruzione</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="storico_page">
+          <layout class="QVBoxLayout" name="storico_page_layout">
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Storico Operazioni - Pagina in costruzione</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

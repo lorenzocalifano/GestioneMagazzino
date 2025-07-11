@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from app.ui.dashboardWindow import Ui_dashboardWindow
 
 
 class Ui_MainWindow(object):

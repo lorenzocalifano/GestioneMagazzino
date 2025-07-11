@@ -1,9 +1,11 @@
+# app/utils/login/login.py
 from PyQt5.QtWidgets import QMainWindow
 from app.models.database import SessionLocal
 from app.models.user import User
 from app.utils.security import verify_password
 from app.ui.loginWindow.loginWindow import Ui_loginWindow
-from app.ui.recuperaPasswordWindow.recuperaPasswordWindow import Ui_recuperaPasswordWindow
+# Import the custom RecuperaPasswordWindow handler
+from app.utils.login.recuperoHandler import RecuperaPasswordWindow #
 
 
 class LoginWindow(QMainWindow):
@@ -18,7 +20,7 @@ class LoginWindow(QMainWindow):
         self.ui.login_button.clicked.connect(self.handle_login)
         self.ui.reset_password_button.clicked.connect(self.show_recupera_password)
 
-        # Aggiungi questa variabile per mantenere riferimento alla finestra di recupero
+        # variabile per mantenere riferimento alla finestra di recupero
         self.recupera_window = None
 
     def handle_login(self):
@@ -35,7 +37,8 @@ class LoginWindow(QMainWindow):
     def show_recupera_password(self):
         """Mostra la finestra di recupero password"""
         self.hide()  # Nasconde la finestra di login
-        self.recupera_window = Ui_recuperaPasswordWindow(self.show_login)
+        # Instantiate RecuperaPasswordWindow from recuperoHandler.py, passing the callback
+        self.recupera_window = RecuperaPasswordWindow(self.show_login) #
         self.recupera_window.show()
 
     def show_login(self):

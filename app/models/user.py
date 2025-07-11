@@ -1,32 +1,22 @@
-from sqlalchemy import Column, Integer, String
-from .database import Base
-from app.utils.security import hash_password, verify_password
+from enum import Enum
+from sqlalchemy import Column, String, Enum as SQLAlchemyEnum, Integer
+from app.models.database import Base
+from app.utils.security import verify_password, hash_password
 
-
-def save_user(self):
-    from app.schemas.user_schema import UserCreate
-    user_data = UserCreate(
-        name=self.ui.name_input.text(),
-        email=self.ui.email_input.text(),
-        password=self.ui.password_input.text()
-    )
-
-    db_user = User(
-        name=user_data.name,
-        email=user_data.email,
-        hashed_password=hash_password(user_data.password)
-    )
-    self.db.add(db_user)
-    self.db.commit()
-
+class RuoloEnum(str, Enum):
+    LAVORATORE = "Lavoratore"
+    SEGRETERIA = "Segreteria"
+    RESPONSABILE = "Responsabile"
 
 class User(Base):
-    __tablename__ = "user"
+    __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)
-    email = Column(String, unique=True, index=True)
-    hashed_password = Column(String, index=True)
+    nome = Column(String(50), nullable=False)
+    cognome = Column(String(50), nullable=False)
+    email = Column(String(100), unique=True, index=True, nullable=False)
+    hashed_password = Column(String(100), nullable=False)
+    ruolo = Column(SQLAlchemyEnum(RuoloEnum), default=RuoloEnum.LAVORATORE, nullable=False)
 
     @classmethod
     def get_by_email(cls, db, email: str):

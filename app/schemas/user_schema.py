@@ -1,12 +1,19 @@
 from pydantic import BaseModel, EmailStr
+from app.models.user import RuoloEnum
 
 class UserCreate(BaseModel):
-    name: str
-    email: str
+    nome: str
+    cognome: str
+    email: EmailStr
     password: str
+    ruolo: RuoloEnum = RuoloEnum.LAVORATORE
 
-class UserResponse(UserCreate):
+class UserResponse(BaseModel):
     id: int
+    nome: str
+    cognome: str
+    email: str
+    ruolo: RuoloEnum
 
     class Config:
-        from_attributes = True
+        orm_mode = True
