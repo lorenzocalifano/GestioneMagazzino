@@ -41,10 +41,11 @@ def start_app():
     def on_login_success(user):
         window = MainApp(user)
         window.show()
-        app.exec_()
 
     login = LoginWindow(on_login_success)
     login.show()
+
+    # Non chiamare app.exec_() qui, basta una volta alla fine
     sys.exit(app.exec_())
 
 if __name__ == "__main__":
